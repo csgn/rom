@@ -2,41 +2,11 @@
 
 In-Memory MapReduce implementation in Scala
 
-# Components
-
-1. App: Beginning of the mapreduce program. User defines its own configuration
-and mapper/reducer functions.
-
-2. Reactor (is a Task): It reads and splits input files, forks coordinator and
-workers, and returns the result to the user.
-
-3. Coordinator (is a Task): It assigns tasks to workers. Act like a messenger
-between other workers. It returns the result to the reactor.
-
-4. Worker (is a Task): It runs map and reduce functions that givens by the user at App.
-
-5. Task: It is a fiber(thread) and has a lifecycle like 'idle', 'run', 'stop'.
-
-# Execution Steps
-
-1. User creates App with configuration and functions.
-```
-object Main extends rom.App {
-    def run: IO[ExitCode] = for {
-        spec = rom.Spec(
-            "input" -> (
-                "format" -> "text",
-                "filePattern" -> "log-*.txt"
-            ),
-            "numOfFibers" -> 2
-        )
-        mapper = rom.Mapper("WordCounter") { ... }
-        reducer = rom.Reducer("Adder") { ... }
-        proc = rom.Proc(spec, mapper, reducer)
-        result <- proc.run
-    } yield IO.println(result).as(ExitCode.Success)
-}
-```
+# Progress
+- [x] Input and Split
+- [ ] Create Coordinator on Parallel
+- [ ] Create Workers on Parallel
+- [ ] Implement Shuffle
 
 # License
 ```
