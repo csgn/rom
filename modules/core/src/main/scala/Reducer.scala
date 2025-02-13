@@ -1,7 +1,5 @@
 package rom.core
 
-import cats.Id
-
-sealed case class Reducer[T, R](
+sealed case class Reducer[_, _](
   val name: String
-)(val run: (String, Array[T]) => Array[R])
+)(val run: (String, List[_]) => (String, _))

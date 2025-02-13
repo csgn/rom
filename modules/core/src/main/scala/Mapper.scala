@@ -1,7 +1,5 @@
 package rom.core
 
-import cats.Id
-
-sealed case class Mapper[R](
+sealed case class Mapper[_](
   val name: String
-)(val run: (String, Iterator[String]) => Array[(String, R)])
+)(val run: (String, Iterator[String]) => List[(String, _)])

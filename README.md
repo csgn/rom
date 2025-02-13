@@ -4,9 +4,9 @@ In-Memory MapReduce implementation in Scala
 
 # Progress
 - [x] Input and Split
-- [ ] Create Coordinator on Parallel
-- [ ] Create Workers on Parallel
-- [ ] Implement Shuffle
+- [x] Create Workers on Parallel
+- [x] Implement Shuffle
+- [ ] Improvments
 
 # License
 ```
