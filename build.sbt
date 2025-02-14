@@ -33,6 +33,15 @@ lazy val examples = project
     name := "examples",
     moduleName := "examples",
   )
+  .settings(
+    libraryDependencies ++= {
+      Seq(
+        cats,
+        catsEffect,
+        betterMonadicFor,
+      )
+    }
+  )
   .dependsOn(core)
   .enablePlugins(ScalafixPlugin)
 
